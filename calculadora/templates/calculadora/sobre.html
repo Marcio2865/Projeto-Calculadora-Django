@@ -1,0 +1,45 @@
+{% extends 'calculadora/base.html' %}
+{% load static %}
+
+{% block titulo %}Calculadora Básica - Sobre Nós{% endblock %}
+
+{% block nav_links %}
+<a href="{% url 'calculadora:index' %}" class="site-nav">Página Principal</a>
+<a href="{% url 'calculadora:contato' %}" class="site-nav">Nosso Contato</a>
+{% endblock %}
+
+{% block conteudo %}
+<div class="content-area">
+    <section class="site-section">
+        <h2>Nossa História</h2>
+        <article class="site-article" style="background: none; border: none; padding: 0;">
+            <p>QUÊ?</p>
+        </article>
+        <img src="{% static 'calculadora/img/Marcinho_VP.jpg' %}" alt="19 de Setembro de 2024" style="max-width: 450px; border-radius: 6px; border: 2px solid var(--cor-borda); margin-top: 10px;">
+        <h3>Márcio Henrique</h3>
+        <img src="{% static 'calculadora/img/Pedrinho_Matador.jpg' %}" alt="16 de Outubro de 2023" style="max-width: 450px; border-radius: 6px; border: 2px solid var(--cor-borda); margin-top: 10px;">
+        <h3>Pedro Campos</h3>
+    </section>
+
+    <section class="site-section">
+        <h2>Nossa Linha do Tempo</h2>
+        <article class="site-article" style="background: none; border: none; padding: 0;">
+            <p>O curso consiste em 3 etapas</p>
+        </article>
+        <dl style="margin-top: 10px;">
+            <dt>Março de 2026 — Primeiro período: JavaScript, 6 semanas</dt>
+            <dd>Começamos a fazer o básico de JavaScript, nossa introdução à programação.</dd>
+
+            <dt>Abril de 2026 — Segundo Período: HTML, CSS & JS, 5 semanas</dt>
+            <dd>Nessa fase, aprendemos a organizar essa página que você está lendo!</dd>
+
+            <dt>Junho de 2026 — Terceiro Período: Python, 14 semanas</dt>
+            <dd>No futuro, aprenderemos a programar em Python! Acabaremos em Setembro.</dd>
+        </dl>
+    </section>
+</div>
+
+<aside class="site-aside">
+    <p><strong>Pilares do Projeto:</strong><br><br>• Código Limpo<br>• Semântica Estrita<br>• Responsividade<br>• Alta Performance</p>
+</aside>
+{% endblock %}

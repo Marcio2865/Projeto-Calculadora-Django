@@ -1,0 +1,71 @@
+{% extends 'calculadora/base.html' %}
+{% load static %}
+
+{% block titulo %}Calculadora Básica{% endblock %}
+
+{% block css_extra %}
+<link rel="stylesheet" href="{% static 'calculadora/calculadora.css' %}">
+{% endblock %}
+
+{% block nav_links %}
+<a href="{% url 'calculadora:sobre' %}" class="site-nav">Sobre Nós</a>
+<a href="{% url 'calculadora:contato' %}" class="site-nav">Nosso Contato</a>
+{% endblock %}
+
+{% block conteudo %}
+<div class="content-area">
+    <section class="site-section">
+        <h2>O quarteto básico da matemática</h2>
+        <dl>
+            <dt>Soma:</dt>
+            <dd>Une algarismos do mesmo tipo, como objetos, valores ou quantidade, e reescreve como uma unidade.</dd>
+
+            <dt>Subtração:</dt>
+            <dd>Desune algarismos do mesmo tipo, isolando o termo removido e contando o termo restante.</dd>
+
+            <dt>Multiplicação:</dt>
+            <dd>Repete acrescentando algarismos, por meio da soma.</dd>
+
+            <dt>Divisão:</dt>
+            <dd>Reparte o algarismo em partes iguais para o número divisor.</dd>
+        </dl>
+    </section>
+</div>
+
+<aside class="site-aside">
+    <p>Você sabia? 70% dos brasileiros só conseguem fazer as 4 operações básicas de cabeça e apenas com números inteiros. Seria isso uma necessidade ou dependência da calculadora?</p>
+
+    <h1 style="color: rgb(0, 0, 0);">CALCULADORA</h1>
+
+    <div id="calculadora">
+        <div id="display">0</div>
+
+        <div id="area-botoes">
+            <button id="igual">=</button>
+            <button id="um">1</button>
+            <button id="dois">2</button>
+            <button id="soma">+</button>
+            <button id="tres">3</button>
+            <button id="quatro">4</button>
+            <button id="cinco">5</button>
+            <button id="sub">-</button>
+            <button id="seis">6</button>
+            <button id="sete">7</button>
+            <button id="oito">8</button>
+            <button id="mult">*</button>
+            <button id="nove">9</button>
+            <button id="zero">0</button>
+            <button id="apagar">C</button>
+            <button id="div">/</button>
+            <button id="virgula">,</button>
+            <button id="erase">X</button>
+            <button id="pot">^</button>
+            <button id="rad">√</button>
+        </div>
+    </div>
+</aside>
+{% endblock %}
+
+{% block js_extra %}
+<script src="{% static 'calculadora/calculadora.js' %}"></script>
+{% endblock %}
