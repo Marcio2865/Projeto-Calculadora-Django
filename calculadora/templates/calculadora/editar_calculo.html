@@ -1,0 +1,41 @@
+{% extends 'calculadora/base.html' %}
+{% load static %}
+
+{% block titulo %}Editar Cálculo{% endblock %}
+
+{% block nav_links %}
+<a href="{% url 'calculadora:index' %}" class="site-nav">Página Principal</a>
+<a href="{% url 'calculadora:historico' %}" class="site-nav">Histórico</a>
+{% endblock %}
+
+{% block conteudo %}
+<div class="content-area">
+    <section class="site-section">
+        <h2>Editar Cálculo</h2>
+        <article class="site-article" style="background: none; border: none; padding: 0;">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-grupo">
+                    <label for="numero1">Primeiro número:</label>
+                    <input type="number" step="any" name="numero1" id="numero1" value="{{ calculo.numero1 }}" required>
+                </div>
+                <div class="form-grupo">
+                    <label for="operacao">Operação:</label>
+                    <select name="operacao" id="operacao" required>
+                        <option value="soma" {% if calculo.operacao == 'soma' %}selected{% endif %}>Soma (+)</option>
+                        <option value="subtracao" {% if calculo.operacao == 'subtracao' %}selected{% endif %}>Subtração (-)</option>
+                        <option value="multiplicacao" {% if calculo.operacao == 'multiplicacao' %}selected{% endif %}>Multiplicação (*)</option>
+                        <option value="divisao" {% if calculo.operacao == 'divisao' %}selected{% endif %}>Divisão (/)</option>
+                    </select>
+                </div>
+                <div class="form-grupo">
+                    <label for="numero2">Segundo número:</label>
+                    <input type="number" step="any" name="numero2" id="numero2" value="{{ calculo.numero2 }}" required>
+                </div>
+                <button type="submit" class="btn-enviar">Salvar Alterações</button>
+                <a href="{% url 'calculadora:historico' %}" class="site-nav">Cancelar</a>
+            </form>
+        </article>
+    </section>
+</div>
+{% endblock %}

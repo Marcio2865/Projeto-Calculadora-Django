@@ -22,13 +22,14 @@
         {% block conteudo %}{% endblock %}
     </main>
 
-    <footer class="site-footer">
+        <footer class="site-footer">
         <p>&copy; 2026 - Conteúdo Educacional</p>
         <div class="footer-navs">
             <nav>
                 <a href="{% url 'calculadora:index' %}" class="site-nav">Página Principal</a>
                 <a href="{% url 'calculadora:sobre' %}" class="site-nav">Sobre Nós</a>
                 <a href="{% url 'calculadora:contato' %}" class="site-nav">Nosso Contato</a>
+                <a href="{% url 'calculadora:historico' %}" class="site-nav">Histórico</a>
             </nav>
         </div>
     </footer>
