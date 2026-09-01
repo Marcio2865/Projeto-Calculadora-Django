@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'calculadora',
+    'contas',
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,10 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+LOGIN_URL = 'contas:login'
+LOGIN_REDIRECT_URL = 'calculadora:historico'
+LOGOUT_REDIRECT_URL = 'calculadora:index'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'

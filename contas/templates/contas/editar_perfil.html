@@ -1,0 +1,33 @@
+{% extends 'calculadora/base.html' %}
+{% load static %}
+
+{% block titulo %}Meu Perfil{% endblock %}
+
+{% block nav_links %}
+<a href="{% url 'calculadora:index' %}" class="site-nav">Página Principal</a>
+<a href="{% url 'calculadora:historico' %}" class="site-nav">Histórico</a>
+{% endblock %}
+
+{% block conteudo %}
+<div class="content-area">
+    <section class="site-section">
+        <h2>Meu Perfil</h2>
+        <article class="site-article" style="background: none; border: none; padding: 0;">
+            {% if perfil.avatar %}
+                <img src="{{ perfil.avatar.url }}" alt="Avatar" style="max-width: 150px; border-radius: 50%; margin-bottom: 15px;">
+            {% else %}
+                <p>Você ainda não tem uma foto de perfil.</p>
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-grupo">
+                    <label for="avatar">Escolher nova foto:</label>
+                    <input type="file" name="avatar" id="avatar" accept="image/*">
+                </div>
+                <button type="submit" class="btn-enviar">Salvar Foto</button>
+            </form>
+        </article>
+    </section>
+</div>
+{% endblock %}

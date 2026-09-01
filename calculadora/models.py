@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Calculo(models.Model):
     OPERACOES = [
@@ -8,6 +10,7 @@ class Calculo(models.Model):
         ('divisao', 'Divisão (/)'),
     ]
 
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='calculos', null=True, blank=True)
     numero1 = models.FloatField(verbose_name="Primeiro número")
     numero2 = models.FloatField(verbose_name="Segundo número")
     operacao = models.CharField(max_length=20, choices=OPERACOES, verbose_name="Operação")

@@ -39,44 +39,34 @@
     </section>
 
     <section class="site-section">
-        <h2>Cálculos Salvos</h2>
-        <article class="site-article" style="background: none; border: none; padding: 0;">
-            {% if calculos %}
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr>
-                            <th style="text-align: left; padding: 8px; border-bottom: 2px solid var(--cor-borda);">Cálculo</th>
-                            <th style="text-align: left; padding: 8px; border-bottom: 2px solid var(--cor-borda);">Resultado</th>
-                            <th style="text-align: left; padding: 8px; border-bottom: 2px solid var(--cor-borda);">Data</th>
-                            <th style="text-align: left; padding: 8px; border-bottom: 2px solid var(--cor-borda);">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for calculo in calculos %}
-                        <tr>
-                            <td style="padding: 8px; border-bottom: 1px solid var(--cor-borda);">{{ calculo.numero1 }} {{ calculo.get_operacao_display }} {{ calculo.numero2 }}</td>
-                            <td style="padding: 8px; border-bottom: 1px solid var(--cor-borda);">
-                                {% if calculo.resultado is not None %}
-                                    {{ calculo.resultado }}
-                                {% else %}
-                                    Erro (divisão por zero)
-                                {% endif %}
-                            </td>
-                            <td style="padding: 8px; border-bottom: 1px solid var(--cor-borda);">{{ calculo.data_criacao|date:"d/m/Y H:i" }}</td>
-                            <td style="padding: 8px; border-bottom: 1px solid var(--cor-borda);">
-                                <a href="{% url 'calculadora:editar_calculo' calculo.pk %}" class="site-nav">Editar</a>
-                                <a href="{% url 'calculadora:excluir_calculo' calculo.pk %}" class="site-nav">Excluir</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% else %}
-                <p>Nenhum cálculo salvo ainda.</p>
-            {% endif %}
-        </article>
-    </section>
-</div>
+    <h2>Filtrar Histórico</h2>
+    <article class="site-article" style="background: none; border: none; padding: 0;">
+        <form method="get">
+            <div class="form-grupo">
+                <label for="operacao_filtro">Operação:</label>
+                <select name="operacao" id="operacao_filtro">
+                    <option value="">Todas</option>
+                    <option value="soma" {% if operacao_filtro == 'soma' %}selected{% endif %}>Soma (+)</option>
+                    <option value="subtracao" {% if operacao_filtro == 'subtracao' %}selected{% endif %}>Subtração (-)</option>
+                    <option value="multiplicacao" {% if operacao_filtro == 'multiplicacao' %}selected{% endif %}>Multiplicação (*)</option>
+                    <option value="divisao" {% if operacao_filtro == 'divisao' %}selected{% endif %}>Divisão (/)</option>
+                </select>
+            </div>
+            <div class="form-grupo">
+                <label for="data_inicio">De:</label>
+                <input type="date" name="data_inicio" id="data_inicio" value="{{ data_inicio|default:'' }}">
+            </div>
+            <div class="form-grupo">
+                <label for="data_fim">Até:</label>
+                <input type="date" name="data_fim" id="data_fim" value="{{ data_fim|default:'' }}">
+            </div>
+            <button type="submit" class="btn-enviar">Filtrar</button>
+            <a href="{% url 'calculadora:historico' %}" class="site-nav">Limpar filtros</a>
+        </form>
+    </article>
+</section>
+
+    </div>
 
 <aside class="site-aside">
     <p><strong>Sobre o Histórico:</strong><br><br>Todo cálculo feito aqui fica salvo no banco de dados. Você pode editar os números/operação ou excluir qualquer registro.</p>
